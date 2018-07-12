@@ -12,7 +12,9 @@ public class Pag109 {
         
 //        Crate<Animal> crate = new Crate<>();
 //        Crate<Animal> crate = new Crate();
-        Crate<Animal> crate = new Crate<Animal>();
+//        Crate crate2 = new Crate();
+        Crate<Animal> crate = new Crate();
+        
         
         crate.setContent(animal);
         
@@ -23,7 +25,9 @@ public class Pag109 {
         
         System.out.println(crate.getContent());
         
+        Removable r = s -> s;
         
+        System.out.println(r.remove(animal));
     }
 
 }
@@ -32,6 +36,14 @@ public class Pag109 {
 class Crate<T> {
     
     private T content;
+    
+    private T[] contents;
+    
+   // it doesnt compile because a generic type must be linked to the instance
+   // private static T other;
+    
+    // it doesn't compile because before the class instantiation you dont know what T is refer to
+    //private T[] contents = new T[3];
     
     public T getContent() {
         return content;
@@ -53,4 +65,10 @@ class Animal {
     public String toString() {
         return name;
     }
+}
+
+interface Removable<T> {
+    
+    public T remove(T t);
+    
 }
